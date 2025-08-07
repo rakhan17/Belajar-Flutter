@@ -43,7 +43,7 @@ class _CounterAppState extends State<CounterApp> {
 			  const SizedBox(height: 20), // Memberi jarak
 			  ElevatedButton(
 				onPressed: _incrementCounter, // Memanggil fungsi untuk mengubah state
-				child: const Text('Tambah bro'),
+				child: const Text('Tambah'),
 			  ),
 			],
 		  ),
