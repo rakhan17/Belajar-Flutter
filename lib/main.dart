@@ -1,58 +1,25 @@
+// ...............
+
 import 'package:flutter/material.dart';
+import 'bab/bab1.dart';
+import 'bab/bab2.dart';
 
-// Contoh StatefulWidget sederhana
-class CounterApp extends StatefulWidget {
-  const CounterApp({super.key});
-
-  @override
-  State<CounterApp> createState() => _CounterAppState(); // Membuat objek State
+void main() {
+  runApp(const MyApp());
 }
 
-class _CounterAppState extends State<CounterApp> {
-  int _counter = 0; // State yang dapat berubah
-
-  void _incrementCounter() {
-	setState(() {
-	  // Metode setState() memberitahu Flutter untuk membangun ulang widget
-	  _counter++;
-	});
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-	return MaterialApp(
-	  home: Scaffold(
-		appBar: AppBar(
-		  title: const Text('Stateful Widget Example'),
-		),
-		body: Center(
-		  child: Column(
-			mainAxisAlignment: MainAxisAlignment.center,
-			children: [
-			  const Text(
-				'Anda telah menekan tombol sebanyak:',
-				style: TextStyle(fontSize: 18),
-			  ),
-			  Text(
-				'$_counter', // Menampilkan state counter
-				style: const TextStyle(
-				  fontSize: 48,
-				  fontWeight: FontWeight.bold,
-				),
-			  ),
-			  const SizedBox(height: 20), // Memberi jarak
-			  ElevatedButton(
-				onPressed: _incrementCounter, // Memanggil fungsi untuk mengubah state
-				child: const Text('Tambah'),
-			  ),
-			],
-		  ),
-		),
-	  ),
-	);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'bab2',
+      routes: {
+  '/bab1': (context) => const Bab1Page(),   // <-- Nama baru yang benar
+  '/bab2': (context) => const Bab2Page(),   // <-- Nama baru yang benar
+      },
+    );
   }
-}
-
-void main() {
-  runApp(const CounterApp());
 }
