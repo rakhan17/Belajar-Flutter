@@ -1,93 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Langkah 1: Buat Model untuk menampung state dan logika kalkulator.
-// Model ini akan menggunakan ChangeNotifier untuk memberi tahu widget jika ada perubahan data.
-class CalculatorModel extends ChangeNotifier {
-  String _result = '0';
-  final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
-
-  // Getter untuk mengakses data dari luar kelas
-  String get result => _result;
-  TextEditingController get controller1 => _controller1;
-  TextEditingController get controller2 => _controller2;
-
-  // Fungsi untuk melakukan operasi perhitungan
-  void _calculate(String operation) {
-    // Ambil nilai dari controller dan coba ubah ke double
-    final double? num1 = double.tryParse(_controller1.text);
-    final double? num2 = double.tryParse(_controller2.text);
-
-    // Langkah 5: Penanganan error jika input bukan angka
-    if (num1 == null || num2 == null) {
-      _result = 'Input harus berupa angka!';
-      notifyListeners(); // Beri tahu widget untuk update UI
-      return;
-    }
-
-    // Lakukan perhitungan berdasarkan operasi yang dipilih
-    switch (operation) {
-      case '+':
-        _result = (num1 + num2).toString();
-        break;
-      case '-':
-        _result = (num1 - num2).toString();
-        break;
-      case 'x':
-        _result = (num1 * num2).toString();
-        break;
-      case '/':
-        // Langkah 5: Penanganan error pembagian dengan nol
-        if (num2 == 0) {
-          _result = 'Tidak bisa dibagi dengan nol!';
-        } else {
-          _result = (num1 / num2).toString();
-        }
-        break;
-    }
-
-    // Hapus .0 jika hasilnya adalah bilangan bulat (misal: 10.0 menjadi 10)
-    if (_result.endsWith('.0')) {
-      _result = _result.substring(0, _result.length - 2);
-    }
-
-    notifyListeners(); // Beri tahu widget untuk update UI setelah perhitungan selesai
-  }
-
-  // Metode publik yang akan dipanggil oleh tombol-tombol di UI
-  void add() => _calculate('+');
-  void subtract() => _calculate('-');
-  void multiply() => _calculate('x');
-  void divide() => _calculate('/');
-
-  // Pastikan untuk membersihkan controller saat model tidak lagi digunakan
-  @override
-  void dispose() {
-    _controller1.dispose();
-    _controller2.dispose();
-    super.dispose();
-  }
-}
-
 // Fungsi main, titik masuk aplikasi
 void main() {
   runApp(
-    // Langkah 6: Gunakan ChangeNotifierProvider untuk menyediakan CalculatorModel
-    // ke seluruh widget tree di bawahnya.
+    // Langkah 1: Sediakan model ke seluruh aplikasi dengan ChangeNotifierProvider.
+    // Ini adalah tempat terbaik untuk meletakkan Provider, yaitu di paling atas.
     ChangeNotifierProvider(
       create: (context) => CalculatorModel(),
-      child: const SimpleCalculatorApp(),
+      child: const MyApp(), // Child-nya adalah root widget aplikasi kita.
     ),
   );
 }
 
-// Widget utama aplikasi
-class SimpleCalculatorApp extends StatelessWidget {
-  const SimpleCalculatorApp({super.key});
+// Widget root aplikasi kita.
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // MaterialApp sekarang berada di DALAM Provider, jadi semua halaman
+    // yang dibuat oleh MaterialApp bisa mengakses Provider tersebut.
     return MaterialApp(
       title: 'Simple Calculator',
       theme: ThemeData(
@@ -100,13 +33,75 @@ class SimpleCalculatorApp extends StatelessWidget {
   }
 }
 
+
+// --- Class Model dan Halaman tidak perlu diubah ---
+
+// Model untuk menampung state dan logika kalkulator.
+class CalculatorModel extends ChangeNotifier {
+  String _result = '0';
+  final TextEditingController _controller1 = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
+
+  String get result => _result;
+  TextEditingController get controller1 => _controller1;
+  TextEditingController get controller2 => _controller2;
+
+  void _calculate(String operation) {
+    final double? num1 = double.tryParse(_controller1.text);
+    final double? num2 = double.tryParse(_controller2.text);
+
+    if (num1 == null || num2 == null) {
+      _result = 'Input harus berupa angka!';
+      notifyListeners();
+      return;
+    }
+
+    switch (operation) {
+      case '+':
+        _result = (num1 + num2).toString();
+        break;
+      case '-':
+        _result = (num1 - num2).toString();
+        break;
+      case 'x':
+        _result = (num1 * num2).toString();
+        break;
+      case '/':
+        if (num2 == 0) {
+          _result = 'Tidak bisa dibagi dengan nol!';
+        } else {
+          _result = (num1 / num2).toString();
+        }
+        break;
+    }
+
+    if (_result.endsWith('.0')) {
+      _result = _result.substring(0, _result.length - 2);
+    }
+
+    notifyListeners();
+  }
+
+  void add() => _calculate('+');
+  void subtract() => _calculate('-');
+  void multiply() => _calculate('x');
+  void divide() => _calculate('/');
+
+  @override
+  void dispose() {
+    _controller1.dispose();
+    _controller2.dispose();
+    super.dispose();
+  }
+}
+
 // Halaman utama kalkulator
 class bab4page extends StatelessWidget {
   const bab4page({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Gunakan Consumer untuk mendengarkan perubahan pada CalculatorModel dan membangun ulang UI
+    // Consumer sekarang pasti bisa menemukan CalculatorModel karena posisinya sudah benar.
     return Scaffold(
       appBar: AppBar(
         title: const Text('Kalkulator Sederhana (Provider)'),
@@ -119,7 +114,6 @@ class bab4page extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                // Langkah 2a: Dua TextField untuk input angka
                 TextField(
                   controller: calculator.controller1,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -138,16 +132,12 @@ class bab4page extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24.0),
-
-                // Langkah 2c: Text widget untuk menampilkan hasil
                 Text(
                   'Hasil: ${calculator.result}',
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 24.0),
-
-                // Langkah 2b & 4: Tombol-tombol operasi
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -165,7 +155,6 @@ class bab4page extends StatelessWidget {
     );
   }
 
-  // Widget helper untuk membuat tombol operasi agar kode tidak berulang
   Widget _buildOperationButton(BuildContext context, String operation, VoidCallback onPressed) {
     return ElevatedButton(
       onPressed: onPressed,
