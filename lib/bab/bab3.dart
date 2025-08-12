@@ -1,8 +1,7 @@
-// Versi NANTI yang kita inginkan
 import 'package:flutter/material.dart';
 
-class Bab1Page extends StatelessWidget { // <-- Nama class diubah
-  const Bab1Page({super.key});
+class Bab3Page extends StatelessWidget { // <-- Nama class diubah
+  const Bab3Page({super.key});
 
   @override
   Widget build(BuildContext context) {
