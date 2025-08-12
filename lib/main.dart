@@ -1,8 +1,8 @@
 // ...............
 
 import 'package:flutter/material.dart';
-import 'bab/bab1.dart';
-import 'bab/bab2.dart';
+import 'bab/bab3.dart';
+import 'bab/bab4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'bab2',
+      initialRoute: 'bab3',
       routes: {
-  '/bab1': (context) => const Bab1Page(),   // <-- Nama baru yang benar
-  '/bab2': (context) => const Bab2Page(),   // <-- Nama baru yang benar
+  'bab3': (context) => const Bab3Page(),
+  'bab4': (context) => const bab4page(),
       },
     );
   }
