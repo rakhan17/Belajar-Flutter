@@ -51,12 +51,21 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+# Bagian lain dari pubspec.yaml...
+
+# Bagian ini harus terlihat persis seperti ini.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  # Baris berikut ini mengaktifkan Material Design.
   uses-material-design: true
+
+  # Untuk menambahkan aset, tambahkan bagian assets seperti ini.
+  # 'assets:' harus sejajar dengan 'uses-material-design:'.
+  assets:
+    # Baris ini harus menjorok 2 spasi ke dalam.
+    - assets/
+
+# Bagian lain dari pubspec.yaml...
 
   # To add assets to your application, add an assets section, like this:
   # assets:
