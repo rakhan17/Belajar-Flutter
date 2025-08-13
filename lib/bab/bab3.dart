@@ -6,6 +6,10 @@ class Bab3Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('CD Name Rakhan Jose Loh Ya😹'),
+        backgroundColor: Colors.blue,
+      ),
       body: Center(
         child: Card(
           elevation: 8.0,
@@ -31,7 +35,7 @@ class Bab3Page extends StatelessWidget {
 
                 // NAMA LENGKAP
                 const Text(
-                  'Rakhan Ataya & Jose Shabra',
+                  'Rakhan Jose',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
@@ -42,7 +46,7 @@ class Bab3Page extends StatelessWidget {
 
                 // PROFESI
                 const Text(
-                  'TUKANG KODING',
+                  'Preman Jumog💪🏿🥵',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.blueGrey,

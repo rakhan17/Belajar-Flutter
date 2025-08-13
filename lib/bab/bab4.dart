@@ -1,31 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-// Widget root aplikasi kita.
-class Bab4Page extends StatelessWidget {
-  const Bab4Page({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // MaterialApp sekarang berada di DALAM Provider, jadi semua halaman
-    // yang dibuat oleh MaterialApp bisa mengakses Provider tersebut.
-    return MaterialApp(
-      title: 'Simple Calculator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const bab4page(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-
-// --- Class Model dan Halaman tidak perlu diubah ---
-
-// Model untuk menampung state dan logika kalkulator.
 class CalculatorModel extends ChangeNotifier {
   String _result = '0';
   final TextEditingController _controller1 = TextEditingController();
@@ -57,7 +32,7 @@ class CalculatorModel extends ChangeNotifier {
         break;
       case '/':
         if (num2 == 0) {
-          _result = 'Tidak bisa dibagi dengan nol!';
+          _result = 'Tidak bisa dibagi nol!';
         } else {
           _result = (num1 / num2).toString();
         }
@@ -84,16 +59,15 @@ class CalculatorModel extends ChangeNotifier {
   }
 }
 
-// Halaman utama kalkulator
-class bab4page extends StatelessWidget {
-  const bab4page({super.key});
+class Bab4Page extends StatelessWidget {
+  const Bab4Page({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Consumer sekarang pasti bisa menemukan CalculatorModel karena posisinya sudah benar.
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kalkulator Sederhana (Provider)'),
+        title: const Text('Wkwk ngitung kok pake kalkulator😹'),
+        backgroundColor: Colors.blue,
       ),
       body: Consumer<CalculatorModel>(
         builder: (context, calculator, child) {
@@ -105,7 +79,8 @@ class bab4page extends StatelessWidget {
               children: <Widget>[
                 TextField(
                   controller: calculator.controller1,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     labelText: 'Angka Pertama',
                     border: OutlineInputBorder(),
@@ -114,7 +89,8 @@ class bab4page extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 TextField(
                   controller: calculator.controller2,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     labelText: 'Angka Kedua',
                     border: OutlineInputBorder(),
@@ -124,7 +100,8 @@ class bab4page extends StatelessWidget {
                 Text(
                   'Hasil: ${calculator.result}',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 24.0),
                 Row(
@@ -144,7 +121,8 @@ class bab4page extends StatelessWidget {
     );
   }
 
-  Widget _buildOperationButton(BuildContext context, String operation, VoidCallback onPressed) {
+  Widget _buildOperationButton(
+      BuildContext context, String operation, VoidCallback onPressed) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(

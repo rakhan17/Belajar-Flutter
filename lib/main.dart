@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // <-- JANGAN LUPA IMPORT INI
+import 'package:provider/provider.dart';
 import 'bab/bab3.dart';
 import 'bab/bab4.dart';
 
-// Import model kalkulator Anda jika berada di file terpisah
-// Jika CalculatorModel ada di dalam bab4.dart, import bab4.dart sudah cukup.
-
 void main() {
   runApp(
-    // Bungkus seluruh aplikasi dengan Provider
     ChangeNotifierProvider(
       create: (context) => CalculatorModel(),
       child: const MyApp(),
@@ -22,15 +18,60 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Aplikasi Edukasi',
       debugShowCheckedModeBanner: false,
-      // Anda bisa menentukan halaman awal di sini
-      // atau biarkan Provider yang menampilkannya via 'home' di bawah
-      initialRoute: 'bab3',
+      initialRoute: 'home',
       routes: {
+        'home': (context) => const HomePage(),
         'bab3': (context) => const Bab3Page(),
-        // Sekarang, saat rute 'bab4' dipanggil, Provider sudah ada di atasnya
         'bab4': (context) => const Bab4Page(),
       },
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Welkam Loh Rekkkk🫦💋😘'),
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, 'bab3');
+              },
+              child: const Text('Menuju Bab 3'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigo,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, 'bab4');
+              },
+              child: const Text('Menuju Bab 4'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
