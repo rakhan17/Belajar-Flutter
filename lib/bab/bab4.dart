@@ -15,7 +15,7 @@ class CalculatorModel extends ChangeNotifier {
     final double? num2 = double.tryParse(_controller2.text);
 
     if (num1 == null || num2 == null) {
-      _result = 'Input harus berupa angka!';
+      _result = 'Angkanya Mana Belegug??';
       notifyListeners();
       return;
     }
@@ -82,7 +82,7 @@ class Bab4Page extends StatelessWidget {
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
-                    labelText: 'Angka Pertama',
+                    labelText: 'Genjreng',
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -92,13 +92,13 @@ class Bab4Page extends StatelessWidget {
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
-                    labelText: 'Angka Kedua',
+                    labelText: 'Ketumplak',
                     border: OutlineInputBorder(),
                   ),
                 ),
                 const SizedBox(height: 24.0),
                 Text(
-                  'Hasil: ${calculator.result}',
+                  'Alhasil🫦: ${calculator.result}',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontSize: 24, fontWeight: FontWeight.bold),

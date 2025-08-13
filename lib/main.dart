@@ -36,25 +36,23 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    // Enhanced Appbar
+      // Enhanced AppBar
       appBar: AppBar(
-      title: const Text(
-      'Welkam Loh Rekkkk🫦💋😘',
-      style: TextStyle(
-      fontSize: 24,
-      color: Colors.white,
+        title: const Text(
+          'Welkam Loh Rekkkk🫦💋😘',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        elevation: 8.0,
     ),
-  ),
-
-  centerTitle: true,
-  backgroundColor: Colors.blue,
-  elevation: 8.0,
-),
-       
 
       // Gradient Background
       body: Container(
-        decoration: const BoxDecoration( 
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -66,7 +64,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Chapter 3 Button
-              _buildChapterButton( 
+              _buildChapterButton(
                 context: context,
                 route: 'bab3',
                 colors: [const Color.fromARGB(255, 244, 230, 106), const Color.fromARGB(255, 170, 170, 0) ],
