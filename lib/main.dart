@@ -54,12 +54,12 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, 'bab3');
               },
-              child: const Text('Menuju Bab 3'),
+              child: const Text('número tres'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.indigo,
+                backgroundColor: Colors.teal,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, 'bab4');
               },
-              child: const Text('Menuju Bab 4'),
+              child: const Text('número cuatro'),
             ),
           ],
         ),
