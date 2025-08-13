@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Fungsi main, titik masuk aplikasi
-void main() {
-  runApp(
-    // Langkah 1: Sediakan model ke seluruh aplikasi dengan ChangeNotifierProvider.
-    // Ini adalah tempat terbaik untuk meletakkan Provider, yaitu di paling atas.
-    ChangeNotifierProvider(
-      create: (context) => CalculatorModel(),
-      child: const MyApp(), // Child-nya adalah root widget aplikasi kita.
-    ),
-  );
-}
 
 // Widget root aplikasi kita.
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Bab4Page extends StatelessWidget {
+  const Bab4Page({super.key});
 
   @override
   Widget build(BuildContext context) {

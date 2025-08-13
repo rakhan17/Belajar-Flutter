@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'bab3': (context) => const Bab3Page(),
         // Sekarang, saat rute 'bab4' dipanggil, Provider sudah ada di atasnya
-        'bab4': (context) => const bab4page(),
+        'bab4': (context) => const Bab4Page(),
       },
     );
   }
