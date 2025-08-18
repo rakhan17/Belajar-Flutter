@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'bab/bab3.dart';
 import 'bab/bab4.dart';
+import 'bab/bab5.dart';
+import 'bab/bab6.dart';
 
 void main() {
   runApp(
@@ -25,6 +27,8 @@ class MyApp extends StatelessWidget {
         'home': (context) => const HomePage(),
         'bab3': (context) => const Bab3Page(),
         'bab4': (context) => const Bab4Page(),
+        'bab5': (context) => const ProductListScreen(),
+        'bab6': (context) => const GalleryPage(),
       },
     );
   }
@@ -47,8 +51,10 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                  vertical: 15,
+                ),
                 textStyle: const TextStyle(fontSize: 18),
               ),
               onPressed: () {
@@ -60,14 +66,46 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                  vertical: 15,
+                ),
                 textStyle: const TextStyle(fontSize: 18),
               ),
               onPressed: () {
                 Navigator.pushNamed(context, 'bab4');
               },
               child: const Text('número cuatro'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                  vertical: 15,
+                ),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, 'bab5');
+              },
+              child: const Text('número cinco'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                  vertical: 15,
+                ),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, 'bab6');
+              },
+              child: const Text('número '),
             ),
           ],
         ),
