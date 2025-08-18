@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'bab/bab3.dart';
 import 'bab/bab4.dart';
-import 'bab/bab5.dart'; // <-- 1. IMPORT FILE BARU
+import 'bab/bab5.dart';
 import 'bab/bab6.dart';
 
 void main() {
@@ -27,8 +27,7 @@ class MyApp extends StatelessWidget {
         'home': (context) => const HomePage(),
         'bab3': (context) => const Bab3Page(),
         'bab4': (context) => const Bab4Page(),
-        'bab5': (context) =>
-            const ProductListScreen(), // <-- 2. TAMBAHKAN RUTE BARU
+        'bab5': (context) => const ProductListScreen(),
         'bab6': (context) => const GalleryPage(),
       },
     );
@@ -64,8 +63,6 @@ class HomePage extends StatelessWidget {
                 child: const Text('Bab 4: Kalkulator'),
               ),
               const SizedBox(height: 20),
-
-              // <-- 3. TAMBAHKAN TOMBOL BARU UNTUK BAB 5 -->
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo),
                 onPressed: () => Navigator.pushNamed(context, 'bab5'),
