@@ -105,7 +105,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, 'bab6');
               },
-              child: const Text('número '),
+              child: const Text('número seis'),
             ),
           ],
         ),
