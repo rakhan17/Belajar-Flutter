@@ -4,6 +4,7 @@ import 'bab/bab3.dart';
 import 'bab/bab4.dart';
 import 'bab/bab5.dart';
 import 'bab/bab6.dart';
+import 'bab/bab7.dart';
 
 void main() {
   runApp(
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Aplikasi Edukasi',
+      title: 'Rakhan Dan Jose Flutter App',
       debugShowCheckedModeBanner: false,
       initialRoute: 'home',
       routes: {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         'bab4': (context) => const Bab4Page(),
         'bab5': (context) => const ProductListScreen(),
         'bab6': (context) => const GalleryPage(),
+        'bab7': (context) => const PhotoListScreen(),
       },
     );
   }
@@ -46,35 +48,103 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          // Agar bisa di-scroll jika tombol banyak
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Tombol Bab 3
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 15,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 onPressed: () => Navigator.pushNamed(context, 'bab3'),
-                child: const Text('Bab 3: Kartu Profil'),
+                child: const Text('número tres'),
               ),
               const SizedBox(height: 20),
-
-              // Tombol Bab 4
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 15,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 onPressed: () => Navigator.pushNamed(context, 'bab4'),
-                child: const Text('Bab 4: Kalkulator'),
+                child: const Text('número cuatro'),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.indigo,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 15,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 onPressed: () => Navigator.pushNamed(context, 'bab5'),
-                child: const Text('Bab 5: Katalog Produk'),
+                child: const Text('número cinco'),
               ),
               const SizedBox(height: 20),
-
-              // Tombol Bab 6
               ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 15,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  
+                ),
                 onPressed: () => Navigator.pushNamed(context, 'bab6'),
-                child: const Text('Bab 6: Galeri Foto'),
+                child: const Text('número seis'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                 backgroundColor: Colors.red, // Pilih warna yang kamu suka
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 15,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () => Navigator.pushNamed(context, 'bab7'),
+               child: const Text('número siete'),
               ),
             ],
           ),

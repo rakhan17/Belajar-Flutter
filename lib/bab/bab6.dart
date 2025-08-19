@@ -24,7 +24,7 @@ class _GalleryPageState extends State<GalleryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Galeri Foto'),
+        title: const Text('Ceritanya Galeri💪🏿'),
         backgroundColor: Colors.green,
       ),
       body: GridView.builder(
